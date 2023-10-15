@@ -172,6 +172,9 @@ class DetailsPage extends StatelessWidget {
   }
 }
 
+
+
+
 class TrackingElement extends StatefulWidget {
 
   const TrackingElement({Key? key, required this.color, required this.iconData, required this.unit, required this.maximum}): super(key: key);
@@ -201,26 +204,27 @@ class _TrackingElementState extends State<TrackingElement> {
     return InkWell(
       onTap: _incrementCounter,
       child: Column(
-          children: <Widget>[
-            Padding(
-                padding: const EdgeInsetsDirectional.fromSTEB(0,32.0,0,32.0),
-                child:
+        children: <Widget>[
+          Padding(
+              padding: const EdgeInsetsDirectional.fromSTEB(0,32.0,0,32.0),
+              child:
 
-                Row(children: <Widget>[
-                  Icon(widget.iconData, color: Colors.blue, size: 30),
-                  Text(
-                    ("$zahler / ${widget.maximum.toInt()} ${widget.unit}"),
-                    style: const TextStyle(color: Colors.deepOrange, fontSize: 35),
-                  ),
-                ],)
-            ),
+              Row(children: <Widget>[
+                Icon(widget.iconData, color: Colors.blue, size: 30),
+                Text(
+                  ("$zahler / ${widget.maximum.toInt()} ${widget.unit}"),
+                  style: const TextStyle(color: Colors.deepOrange, fontSize: 35),
+                ),
+              ],)
+          ),
 
-            LinearProgressIndicator(
-              minHeight: 10,
-              value: zahler/widget.maximum,
-              color: widget.color,
-            )
-          ],
-          ),);
-    }
+          LinearProgressIndicator(
+            minHeight: 10,
+            value: zahler/widget.maximum,
+            color: widget.color,
+          )
+        ],
+      ),);
+  }
 }
+
