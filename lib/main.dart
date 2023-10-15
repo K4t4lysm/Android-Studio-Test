@@ -32,7 +32,7 @@ class _MyTabsState extends State<MyTabs> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Tab App'),
+        title: Text('Fit for Life'),
       ),
       body: _tabs[_currentIndex],
       bottomNavigationBar: BottomNavigationBar(
@@ -44,16 +44,16 @@ class _MyTabsState extends State<MyTabs> {
         },
         items: [
           BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: 'Tab 1',
+            icon: Icon(Icons.timer),
+            label: 'Runtime',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.person),
-            label: 'Tab 2',
+            icon: Icon(Icons.restaurant),
+            label: 'Kcal',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.settings),
-            label: 'Tab 3',
+            icon: Icon(Icons.water),
+            label: 'drinks',
           ),
         ],
       ),
