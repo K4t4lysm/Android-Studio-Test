@@ -32,7 +32,7 @@ class _MyTabsState extends State<MyTabs> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Fit for Life'),
+        title: const Text('Fit for Life'),
       ),
       body: _tabs[_currentIndex],
       bottomNavigationBar: BottomNavigationBar(
@@ -42,7 +42,7 @@ class _MyTabsState extends State<MyTabs> {
             _currentIndex = index;
           });
         },
-        items: [
+        items: const [
           BottomNavigationBarItem(
             icon: Icon(Icons.timer),
             label: 'Runtime',
@@ -157,17 +157,70 @@ class Tab3 extends StatelessWidget {
 class DetailsPage extends StatelessWidget {
   final String name;
 
-  DetailsPage(this.name);
+  const DetailsPage(this.name);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Details Page'),
+        title: const Text('Details Page'),
       ),
       body: Center(
         child: Text('Date: $name'),
       ),
     );
   }
+}
+
+class TrackingElement extends StatefulWidget {
+
+  const TrackingElement({Key? key, required this.color, required this.iconData, required this.unit, required this.maximum}): super(key: key);
+  final Color color;
+  final IconData iconData;
+  final String unit;
+  final double maximum;
+
+  @override
+  State<TrackingElement> createState() => _TrackingElementState();
+}
+
+class _TrackingElementState extends State<TrackingElement> {
+
+  int zahler = 0;
+  void _incrementCounter() {
+    setState(() {
+      if (!(zahler >= widget.maximum)) {
+        zahler++;
+      }
+
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return InkWell(
+      onTap: _incrementCounter,
+      child: Column(
+          children: <Widget>[
+            Padding(
+                padding: const EdgeInsetsDirectional.fromSTEB(0,32.0,0,32.0),
+                child:
+
+                Row(children: <Widget>[
+                  Icon(widget.iconData, color: Colors.blue, size: 30),
+                  Text(
+                    ("$zahler / ${widget.maximum.toInt()} ${widget.unit}"),
+                    style: const TextStyle(color: Colors.deepOrange, fontSize: 35),
+                  ),
+                ],)
+            ),
+
+            LinearProgressIndicator(
+              minHeight: 10,
+              value: zahler/widget.maximum,
+              color: widget.color,
+            )
+          ],
+          ),);
+    }
 }
